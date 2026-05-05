@@ -89,7 +89,7 @@
                             // Standart olarak karakter resmini alıyoruz
                             let resim = bulunanKisi.character.image ? bulunanKisi.character.image.medium : (bulunanKisi.person.image ? bulunanKisi.person.image.medium : 'https://via.placeholder.com/210x295?text=Resim+Yok');
 
-                            // ZEKİCE MÜDAHALE: Carl'ın karakter resmi siyah-beyaz olduğu için, API'den Chandler Riggs'in (oyuncunun) renkli resmini çekiyoruz!
+                            
                             if (hedef.aranacak === "Carl" && bulunanKisi.person.image) {
                                 resim = bulunanKisi.person.image.medium; 
                             }
