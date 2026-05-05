@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İlgi Alanlarım - The Walking Dead</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Gezinme Menüsü (Navbar) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Projem</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hakkinda.html">Hakkında</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ozgecmis.html">Özgeçmiş</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 bg-white p-5 rounded shadow">
+        <header class="border-bottom pb-3 mb-4 text-center">
+            <h1 class="text-danger fw-bold">Favori Dizim: The Walking Dead</h1>
+            <p class="text-secondary">Aşağıdaki efsane kadronun resimleri ve gerçek isimleri TVmaze API'den çekilirken, rol açıklamaları JavaScript ile özel olarak eklenmektedir.</p>
+        </header>
+
+        <!-- API'den gelen verilerin yazdırılacağı alan -->
+        <div class="row justify-content-center" id="api-verileri">
+            <div class="text-center mt-3" id="yukleniyor">
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Yükleniyor...</span>
+                </div>
+                <p class="mt-2 text-danger fw-bold">Karakterler zombi istilasından kurtarılıyor...</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-5 border-top pt-4">
+            <a href="index.html" class="btn btn-secondary">Ana Sayfaya Dön</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- API'den Veri Çekme İşlemi (JavaScript) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const apiUrl = 'https://api.tvmaze.com/shows/73/cast';
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const veriAlani = document.getElementById('api-verileri');
+                    document.getElementById('yukleniyor').style.display = 'none';
+
+                    const hedefKarakterler = [
+                        { aranacak: "Rick Grimes", rol: "Grubun efsanevi lideri ve eski şerif yardımcısı." },
+                        { aranacak: "Daryl", rol: "Arbalet ustası, hayatta kalma uzmanı ve Rick'in sağ kolu." },
+                        { aranacak: "Glenn", rol: "Grubun cesur, zeki ve yüreği temiz tedarikçisi." },
+                        { aranacak: "Michonne", rol: "Katanasıyla zombilere korku salan efsanevi savaşçı." },
+                        { aranacak: "Carl", rol: "Rick'in oğlu, kıyamet dünyasında olgunlaşan cesur genç." },
+                        { aranacak: "Maggie", rol: "Hilltop'ın güçlü, zeki ve kararlı lideri." },
+                        { aranacak: "Carol", rol: "Zamanla grubun en tehlikeli savaşçısına dönüşen gizli silah." },
+                        { aranacak: "Eugene", rol: "Grubun beyni, bilim insanı ve hayatta kalma uzmanı." },
+                        { aranacak: "Shane", rol: "Rick'in eski ortağı, hayatta kalmak için vahşileşen ilk isim." },
+                        { aranacak: "Morgan", rol: "Rick'i ilk kurtaran, sopasıyla harikalar yaratan dövüş ustası." },
+                        { aranacak: "Paul", rol: "Nam-ı diğer 'Jesus', Hilltop'ın yetenekli gözcüsü." },
+                        { aranacak: "Aaron", rol: "Alexandria'nın merhametli, cesur ve sadık elçisi." },
+                        { aranacak: "Negan", rol: "Kurtarıcılar'ın (Saviors) acımasız lideri ve Lucille'in sahibi." },
+                        { aranacak: "Governor", rol: "Woodbury kasabasının karizmatik ama psikopat lideri (Vali)." }
+                    ];
+
+                    hedefKarakterler.forEach(hedef => {
+                        const bulunanKisi = data.find(kisi => kisi.character.name.includes(hedef.aranacak));
+                        
+                        if(bulunanKisi) {
+                            // Standart olarak karakter resmini alıyoruz
+                            let resim = bulunanKisi.character.image ? bulunanKisi.character.image.medium : (bulunanKisi.person.image ? bulunanKisi.person.image.medium : 'https://via.placeholder.com/210x295?text=Resim+Yok');
+
+                            // ZEKİCE MÜDAHALE: Carl'ın karakter resmi siyah-beyaz olduğu için, API'den Chandler Riggs'in (oyuncunun) renkli resmini çekiyoruz!
+                            if (hedef.aranacak === "Carl" && bulunanKisi.person.image) {
+                                resim = bulunanKisi.person.image.medium; 
+                            }
+
+                            const kartHTML = `
+                                <div class="col-md-3 mb-4">
+                                    <div class="card h-100 shadow-sm border-danger">
+                                        <!-- Yüzler (Shane dahil) kesilmesin diye object-position: top; duruyor -->
+                                        <img src="${resim}" class="card-img-top" alt="${bulunanKisi.character.name}" style="height: 300px; object-fit: cover; object-position: top;">
+                                        <div class="card-body text-center d-flex flex-column">
+                                            <h5 class="card-title text-danger fw-bold">${bulunanKisi.character.name}</h5>
+                                            <p class="card-text text-dark fst-italic" style="font-size: 0.9rem;">${hedef.rol}</p>
+                                            <p class="card-text text-muted mt-auto border-top pt-2">
+                                                <small>Oyuncu: <strong>${bulunanKisi.person.name}</strong></small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            veriAlani.innerHTML += kartHTML;
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('API Veri Çekme Hatası:', error);
+                    document.getElementById('api-verileri').innerHTML = '<p class="text-danger text-center">Veriler çekilirken bir zombi saldırısı oluştu!</p>';
+                });
+        });
+    </script>
+</body>
+</html>
