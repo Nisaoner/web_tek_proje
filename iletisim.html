@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Projem</title>
+    <!-- Bootstrap 5 CSS Framework: Modern ve duyarlı (responsive) tasarım bileşenleri için dahil edildi -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <!-- Global Navigasyon Menüsü: Kullanıcının sayfalar arası geçişini sağlar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Projem</a>
+            <!-- Mobil görünüm için hamburger menü butonu -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hakkinda.html">Hakkında</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ozgecmis.html">Özgeçmiş</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
+                    <!-- Mevcut sayfa 'active' sınıfı ile vurgulanmıştır -->
+                    <li class="nav-item"><a class="nav-link active" href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <!-- Formun odak noktası olması için 8 birimlik (col-md-8) merkezi bir alan ayrıldı -->
+            <div class="col-md-8 bg-white p-5 rounded shadow">
+                <h2 class="text-center mb-4 border-bottom pb-3">Bize Ulaşın</h2>
+                
+                <!-- 
+                    İletişim Formu: 'novalidate' özelliği tarayıcının varsayılan doğrulamasını kapatır, 
+                    doğrulama işlemleri özel JavaScript mantığı ile Bootstrap sınıfları üzerinden yönetilir. 
+                -->
+                <form id="contactForm" class="needs-validation" novalidate>
+                    <!-- Kullanıcı Ad-Soyad Girişi -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label fw-bold">Adınız Soyadınız:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Örn: Nisa Nur Öner" required>
+                        <!-- Hata durumunda gösterilecek kullanıcı geri bildirimi -->
+                        <div class="invalid-feedback">Sistemde kimliğinizin doğrulanabilmesi için adınızı girmeniz zorunludur.</div>
+                    </div>
+
+                    <!-- E-posta Girişi: 'type="email"' ile temel format kontrolü sağlanır -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-bold">E-posta Adresiniz:</label>
+                        <input type="email" class="form-control" id="email" placeholder="ornek@sakarya.edu.tr" required>
+                        <div class="invalid-feedback">Lütfen geçerli bir e-posta formatı (user@example.com) kullanınız.</div>
+                    </div>
+
+                    <!-- Dropdown (Açılır Menü): Konu başlığı seçimi -->
+                    <div class="mb-3">
+                        <label for="subject" class="form-label fw-bold">Mesaj Konusu:</label>
+                        <select class="form-select" id="subject" required>
+                            <option value="">Seçim yapınız...</option>
+                            <option value="Destek">Teknik Destek</option>
+                            <option value="Geri">Genel Geri Bildirim</option>
+                            <option value="Is">İş Birliği / Proje</option>
+                        </select>
+                        <div class="invalid-feedback">İşleminizin doğru birime iletilebilmesi için bir konu seçiniz.</div>
+                    </div>
+
+                    <!-- Mesaj Alanı -->
+                    <div class="mb-3">
+                        <label for="message" class="form-label fw-bold">Mesajınız:</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Mesajınızı buraya detaylandırabilirsiniz..." required></textarea>
+                        <div class="invalid-feedback">Mesaj içeriği boş bırakılamaz.</div>
+                    </div>
+
+                    <!-- Submit Butonu -->
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-danger btn-lg">Mesajı Gönder</button>
+                        <button type="reset" class="btn btn-outline-secondary">Formu Temizle</button>
+                    </div>
+                </form>
+
+                <!-- Başarı Geri Bildirimi: Başlangıçta 'd-none' sınıfı ile gizlenmiştir -->
+                <div id="successMessage" class="alert alert-success mt-4 d-none" role="alert">
+                    <h4 class="alert-heading">Başarılı!</h4>
+                    <p>Mesajınız sunucularımıza iletildi. En kısa sürede belirttiğiniz e-posta adresi üzerinden dönüş sağlanacaktır.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS: Navbar ve dinamik bileşenlerin çalışması için gereklidir -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Client-Side Form Validation Logic (İstemci Taraflı Doğrulama Mantığı) -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            /** 
+             * Formun varsayılan 'action' davranışını engellemek (sayfa yenilenmesini durdurmak)
+             * ve veriyi JavaScript ile işlemek için preventDefault() kullanılmıştır.
+             */
+            event.preventDefault();
+            
+            const form = event.target;
+
+            // HTML5 'checkValidity' API'si ile form alanlarının kurallara uygunluğu denetlenir
+            if (!form.checkValidity()) {
+                // Eğer alanlar eksik veya hatalıysa, Bootstrap'ın 'was-validated' sınıfı eklenerek hatalar gösterilir
+                event.stopPropagation();
+                form.classList.add('was-validated');
+            } else {
+                /** 
+                 * Doğrulama başarılıysa:
+                 * 1. Form arayüzden gizlenir.
+                 * 2. Başarı mesajı görünür hale getirilir.
+                 * Not: Gerçek bir projede burada 'fetch' ile veriler bir backend API'sine gönderilir.
+                 */
+                form.classList.add('d-none'); 
+                document.getElementById('successMessage').classList.remove('d-none'); 
+            }
+        });
+    </script>
+</body>
+</html>
