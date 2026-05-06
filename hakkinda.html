@@ -3,50 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakkında</title>
+    <title>Hakkında - Projem</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-light">
- <!-- Gezinme Menüsü (Navbar) -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Projem</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
-                <li class="nav-item"><a class="nav-link" href="hakkinda.html">Hakkında</a></li>
-                <li class="nav-item"><a class="nav-link" href="ozgecmis.html">Özgeçmiş</a></li>
-                <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
-                <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
-                <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
-                <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
-            </ul>
+
+    <!-- Gezinme Menüsü (Navbar) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Projem</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="hakkinda.html">Hakkında</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ozgecmis.html">Özgeçmiş</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
+                    <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hakkında Sayfası İçeriği -->
+    <div class="container mt-5">
+        <div class="row bg-white p-5 rounded shadow">
+            
+            <div class="col-12 border-bottom pb-3 mb-4 text-center">
+                <h2 class="fw-bold text-danger">Hakkımda</h2>
+            </div>
+
+            <!-- Sol Taraf: Tanıtım ve Bağlantılar -->
+            <div class="col-md-7">
+                <h4 class="fw-bold text-dark">Merhaba, ben Nisa Nur Öner</h4>
+                <p class="text-secondary mt-3" style="line-height: 1.8;">
+                    Sakarya Üniversitesi'nde Bilgisayar Mühendisliği öğrencisiyim. Yazılım dünyasında kendimi geliştirmek için C# ve web teknolojileriyle projeler üretiyor, problem çözme ve algoritma becerilerimi artırmaya çalışıyorum. Sektörü yakından takip edebilmek için okulumuzdaki bilişim ve yazılım kulüplerinin düzenlediği etkinliklere, seminerlere aktif olarak katılıyorum.
+                </p>
+                <p class="text-secondary" style="line-height: 1.8;">
+                    Derslerden arta kalan zamanlarımda en büyük hobim kitap okumak ve dizi izlemek. Yabancı dizilerin yanı sıra yerli dizileri de yakından takip ediyorum; özellikle <strong>Yaprak Dökümü</strong> bıkmadan izlediğim efsane favorilerimden biridir.
+                </p>
+
+                <!-- Bağlantılar -->
+                <h5 class="mt-4 fw-bold text-dark border-bottom pb-2 d-inline-block">Bağlantılarım</h5>
+                <ul class="list-unstyled mt-2">
+                    <li class="mb-2">
+                        <a href="https://github.com/Nisaoner" target="_blank" class="text-decoration-none fw-bold text-primary">🔗 GitHub Profilim</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="https://cs.sakarya.edu.tr/" target="_blank" class="text-decoration-none fw-bold text-success">🔗 SAÜ Bilgisayar Mühendisliği</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sağ Taraf: Medya (Resim) -->
+            <div class="col-md-5 text-center mt-4 mt-md-0 d-flex flex-column align-items-center justify-content-center">
+                <h5 class="fw-bold mb-3">Vazgeçilmez Dizim</h5>
+                <!-- İnternet üzerinden doğrudan çekilen Yaprak Dökümü görseli -->
+                <img src="https://yt3.googleusercontent.com/haTDIRamfCjs53RVuK8hHLD4V0z0Y5ZKrf20BEzGvZExlGa9D89RZkeD7Cx_XsbJnPHBC9qTxQ=s900-c-k-c0x00ffffff-no-rj" alt="Yaprak Dökümü Dizisi" class="img-fluid rounded shadow-sm border border-3 border-danger" style="max-height: 280px; object-fit: cover;">
+                <p class="text-muted mt-2 small fst-italic">Aman Ali Rıza Bey, ağzımızın tadı kaçmasın...</p>
+            </div>
+
         </div>
     </div>
-</nav>
-<!--  Gezinme Menüsü -->
-    <div class="container mt-5 bg-white p-5 rounded shadow">
-        <h1 class="text-primary">Hakkımda</h1>
-        <p class="lead">Merhaba, ben Nisa. Sakarya Üniversitesi Bilgisayar Mühendisliği öğrencisiyim.</p>
-        
-        <h3 class="mt-4">Hobilerim ve Etkinlikler</h3>
-        <ul>
-            <li>Yabancı veya yerli diziler izlemek</li>
-            <li>Yabancı dil pratiği yapmak ve İngilizce öğrenmek</li>
-            <li>Arkadaşlarımla sosyal vakit geçirmek</li>
-        </ul>
 
-        
-       
-
-        <h3 class="mt-4">Bağlantılar</h3>
-        <a href="https://github.com/Nisaoner" target="_blank" class="btn btn-dark">GitHub Profilim</a>
-        <a href="index.html" class="btn btn-secondary">Ana Sayfaya Dön</a>
-    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
