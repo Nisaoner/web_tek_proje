@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İletişim - Projem</title>
-    <!-- Bootstrap 5 CSS Framework: Modern ve duyarlı (responsive) tasarım bileşenleri için dahil edildi -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body class="bg-light">
 
@@ -24,104 +24,189 @@
                     <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
                     <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
                     <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
-                    <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="iletisim.html">İletişim</a></li>
                     <li class="nav-item"><a class="nav-link text-warning fw-bold" href="login.html">Giriş Yap</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-5">
+    <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
-            <!-- Formun odak noktası olması için 8 birimlik (col-md-8) merkezi bir alan ayrıldı -->
-            <div class="col-md-8 bg-white p-5 rounded shadow">
-                <h2 class="text-center mb-4 border-bottom pb-3">Bize Ulaşın</h2>
+            
+            <div id="app" class="col-md-8 bg-white p-5 rounded shadow">
+                <h2 class="text-center mb-4 border-bottom pb-3 text-danger fw-bold">Bize Ulaşın</h2>
                 
-                <!-- 
-                    İletişim Formu: 'novalidate' özelliği tarayıcının varsayılan doğrulamasını kapatır, 
-                    doğrulama işlemleri özel JavaScript mantığı ile Bootstrap sınıfları üzerinden yönetilir. 
-                -->
-                <form id="contactForm" class="needs-validation" novalidate>
-                    <!-- Kullanıcı Ad-Soyad Girişi -->
-                    <div class="mb-3">
-                        <label for="name" class="form-label fw-bold">Adınız Soyadınız:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Örn: Nisa Nur Öner" required>
-                        <!-- Hata durumunda gösterilecek kullanıcı geri bildirimi -->
-                        <div class="invalid-feedback">Sistemde kimliğinizin doğrulanabilmesi için adınızı girmeniz zorunludur.</div>
+                <div v-if="vueError" class="alert alert-danger fw-bold" v-text="vueError"></div>
+                <div id="nativeError" class="alert alert-warning fw-bold d-none"></div>
+
+                <form action="iletisim.php" method="POST" id="contactForm" ref="contactForm">
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label fw-bold">Adınız Soyadınız:</label>
+                            <input type="text" class="form-control" name="isim" id="name" v-model="formData.name" placeholder="Örn: Nisa Nur Öner">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label fw-bold">E-posta Adresiniz:</label>
+                            <input type="text" class="form-control" name="email" id="email" v-model="formData.email" placeholder="ornek@sakarya.edu.tr">
+                        </div>
                     </div>
 
-                    <!-- E-posta Girişi: 'type="email"' ile temel format kontrolü sağlanır -->
                     <div class="mb-3">
-                        <label for="email" class="form-label fw-bold">E-posta Adresiniz:</label>
-                        <input type="email" class="form-control" id="email" placeholder="ornek@sakarya.edu.tr" required>
-                        <div class="invalid-feedback">Lütfen geçerli bir e-posta formatı (user@example.com) kullanınız.</div>
+                        <label for="phone" class="form-label fw-bold">Telefon Numaranız:</label>
+                        <input type="text" class="form-control" name="telefon" id="phone" v-model="formData.phone" placeholder="05xxxxxxxxx">
                     </div>
 
-                    <!-- Dropdown (Açılır Menü): Konu başlığı seçimi -->
+                    <div class="mb-3">
+                        <label class="form-label fw-bold d-block">Cinsiyetiniz:</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cinsiyet" id="kadin" value="Kadın" v-model="formData.gender">
+                            <label class="form-check-label" for="kadin">Kadın</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cinsiyet" id="erkek" value="Erkek" v-model="formData.gender">
+                            <label class="form-check-label" for="erkek">Erkek</label>
+                        </div>
+                    </div>
+
                     <div class="mb-3">
                         <label for="subject" class="form-label fw-bold">Mesaj Konusu:</label>
-                        <select class="form-select" id="subject" required>
+                        <select class="form-select" name="konu" id="subject" v-model="formData.subject">
                             <option value="">Seçim yapınız...</option>
                             <option value="Destek">Teknik Destek</option>
-                            <option value="Geri">Genel Geri Bildirim</option>
-                            <option value="Is">İş Birliği / Proje</option>
+                            <option value="Oneri">Öneri ve Şikayet</option>
+                            <option value="Diger">Diğer</option>
                         </select>
-                        <div class="invalid-feedback">İşleminizin doğru birime iletilebilmesi için bir konu seçiniz.</div>
                     </div>
 
-                    <!-- Mesaj Alanı -->
                     <div class="mb-3">
                         <label for="message" class="form-label fw-bold">Mesajınız:</label>
-                        <textarea class="form-control" id="message" rows="4" placeholder="Mesajınızı buraya detaylandırabilirsiniz..." required></textarea>
-                        <div class="invalid-feedback">Mesaj içeriği boş bırakılamaz.</div>
+                        <textarea class="form-control" name="mesaj" id="message" rows="4" v-model="formData.message" placeholder="Mesajınızı detaylandırın..."></textarea>
                     </div>
 
-                    <!-- Submit Butonu -->
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-danger btn-lg">Mesajı Gönder</button>
-                        <button type="reset" class="btn btn-outline-secondary">Formu Temizle</button>
+                    <div class="mb-4 form-check">
+                        <input type="checkbox" class="form-check-input" name="onay" id="terms" v-model="formData.terms">
+                        <label class="form-check-label text-muted small" for="terms">Kişisel verilerimin işlenmesini onaylıyorum.</label>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+                        <button type="button" class="btn btn-dark fw-bold px-4" onclick="validateNative()">Native JS İle Kontrol Et ve Gönder</button>
+    
+                        <button type="button" class="btn btn-success fw-bold px-4" @click="validateVue">Vue.js İle Kontrol Et ve Gönder</button>
+    
+                        <button type="reset" class="btn btn-outline-danger fw-bold px-4" @click="resetErrors">Formu Temizle</button>
                     </div>
                 </form>
 
-                <!-- Başarı Geri Bildirimi: Başlangıçta 'd-none' sınıfı ile gizlenmiştir -->
-                <div id="successMessage" class="alert alert-success mt-4 d-none" role="alert">
-                    <h4 class="alert-heading">Başarılı!</h4>
-                    <p>Mesajınız sunucularımıza iletildi. En kısa sürede belirttiğiniz e-posta adresi üzerinden dönüş sağlanacaktır.</p>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap Bundle JS: Navbar ve dinamik bileşenlerin çalışması için gereklidir -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Client-Side Form Validation Logic (İstemci Taraflı Doğrulama Mantığı) -->
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            /** 
-             * Formun varsayılan 'action' davranışını engellemek (sayfa yenilenmesini durdurmak)
-             * ve veriyi JavaScript ile işlemek için preventDefault() kullanılmıştır.
-             */
-            event.preventDefault();
-            
-            const form = event.target;
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    formData: { name: '', email: '', phone: '', gender: '', subject: '', message: '', terms: false },
+                    vueError: ''
+                }
+            },
+            methods: {
+                validateVue() {
+                    // Diğer hata kutusunu gizle
+                    document.getElementById('nativeError').classList.add('d-none');
+                    this.vueError = '';
 
-            // HTML5 'checkValidity' API'si ile form alanlarının kurallara uygunluğu denetlenir
-            if (!form.checkValidity()) {
-                // Eğer alanlar eksik veya hatalıysa, Bootstrap'ın 'was-validated' sınıfı eklenerek hatalar gösterilir
-                event.stopPropagation();
-                form.classList.add('was-validated');
-            } else {
-                /** 
-                 * Doğrulama başarılıysa:
-                 * 1. Form arayüzden gizlenir.
-                 * 2. Başarı mesajı görünür hale getirilir.
-                 * Not: Gerçek bir projede burada 'fetch' ile veriler bir backend API'sine gönderilir.
-                 */
-                form.classList.add('d-none'); 
-                document.getElementById('successMessage').classList.remove('d-none'); 
+                    // Boş Alan Kontrolü
+                    if(!this.formData.name || !this.formData.email || !this.formData.phone || !this.formData.gender || !this.formData.subject || !this.formData.message) {
+                        this.vueError = "VUE.JS HATASI: Lütfen tüm alanları eksiksiz doldurun!";
+                        return;
+                    }
+                    // Email Format Kontrolü (Regex)
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if(!emailPattern.test(this.formData.email)) {
+                        this.vueError = "VUE.JS HATASI: Lütfen geçerli bir e-posta adresi girin!";
+                        return;
+                    }
+                    // Telefon Sadece Rakam Kontrolü (Regex)
+                    const phonePattern = /^[0-9]+$/;
+                    if(!phonePattern.test(this.formData.phone)) {
+                        this.vueError = "VUE.JS HATASI: Telefon numarası sadece rakamlardan oluşmalıdır!";
+                        return;
+                    }
+                    // Checkbox Onay Kontrolü
+                    if(!this.formData.terms) {
+                        this.vueError = "VUE.JS HATASI: Lütfen sözleşmeyi onaylayın!";
+                        return;
+                    }
+
+                    // Her şey tamamsa formu PHP'ye gönder
+                    this.$refs.contactForm.submit();
+                },
+                resetErrors() {
+                    this.vueError = '';
+                    document.getElementById('nativeError').classList.add('d-none');
+                }
             }
-        });
+        }).mount('#app');
     </script>
+
+    <script>
+        function validateNative() {
+            const nativeErr = document.getElementById('nativeError');
+            nativeErr.classList.add('d-none');
+            nativeErr.innerText = '';
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+            const terms = document.getElementById('terms').checked;
+            
+            // Radio button kontrolü
+            let genderSelected = false;
+            const genders = document.getElementsByName('cinsiyet');
+            for(let i=0; i<genders.length; i++) {
+                if(genders[i].checked) genderSelected = true;
+            }
+
+            // Boş Alan Kontrolü
+            if(!name || !email || !phone || !subject || !message || !genderSelected) {
+                nativeErr.innerText = "NATIVE JS HATASI: Lütfen tüm alanları doldurunuz!";
+                nativeErr.classList.remove('d-none');
+                return;
+            }
+            // Email Format Kontrolü
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if(!emailPattern.test(email)) {
+                nativeErr.innerText = "NATIVE JS HATASI: Lütfen geçerli bir e-posta formatı kullanın!";
+                nativeErr.classList.remove('d-none');
+                return;
+            }
+            // Telefon Rakam Kontrolü
+            const phonePattern = /^[0-9]+$/;
+            if(!phonePattern.test(phone)) {
+                nativeErr.innerText = "NATIVE JS HATASI: Telefon alanı harf veya boşluk içeremez, sadece rakam giriniz!";
+                nativeErr.classList.remove('d-none');
+                return;
+            }
+            // Checkbox Kontrolü
+            if(!terms) {
+                nativeErr.innerText = "NATIVE JS HATASI: Kişisel verilerin işlenmesini onaylamanız gerekmektedir!";
+                nativeErr.classList.remove('d-none');
+                return;
+            }
+
+            // Her şey tamamsa formu submit et
+            document.getElementById('contactForm').submit();
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
