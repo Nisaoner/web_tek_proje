@@ -3,52 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Özgeçmiş</title>
+    <title>Özgeçmiş - Nisa Nur Öner</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-light">
- <!-- Gezinme Menüsü (Navbar) -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Projem</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
-                <li class="nav-item"><a class="nav-link" href="hakkinda.html">Hakkında</a></li>
-                <li class="nav-item"><a class="nav-link" href="ozgecmis.html">Özgeçmiş</a></li>
-                <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
-                <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
-                <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
-                <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-    <div class="container mt-5 bg-white p-5 rounded shadow">
-        
-        <!-- Semantik etiket: header -->
-        <header class="border-bottom pb-3 mb-4">
-            <h1 class="text-primary">Özgeçmiş (CV)</h1>
-        </header>
 
-        <!-- Semantik etiket: section -->
-        <section>
-            <h2 class="text-secondary">Eğitim Bilgileri</h2>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Projem</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="hakkinda.html">Hakkında</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="ozgecmis.html">Özgeçmiş</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
+                    <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-5 mb-5">
+        <section class="row bg-white p-5 rounded shadow">
             
-            <!-- Semantik etiket: article -->
-            <article class="mt-3">
-                <h3>Sakarya Üniversitesi</h3>
-                <p class="fw-bold mb-1">Bilgisayar Mühendisliği Bölümü - Lisans Öğrencisi</p>
-                <p>Donanım yapılarından web teknolojilerine kadar kapsamlı bir mühendislik eğitimi alıyorum.</p>
+            <header class="col-12 border-bottom pb-3 mb-4 text-center">
+                <h2 class="fw-bold text-dark">Özgeçmiş ve Akademik Bilgiler</h2>
+                <p class="text-muted">Öğrenci No: b251210069</p>
+            </header>
+
+            <article class="col-md-12 mb-5">
+                <header>
+                    <h4 class="text-danger mb-3 font-italic">Eğitim Geçmişim</h4>
+                </header>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered align-middle">
+                        <thead class="table-dark text-center">
+                            <tr>
+                                <th>Eğitim Düzeyi</th>
+                                <th>Kurum Adı</th>
+                                <th>Bölüm / Alan</th>
+                                <th>Durum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Üniversite (Lisans)</td>
+                                <td><a href="https://cs.sakarya.edu.tr/" target="_blank" class="text-decoration-none fw-semibold text-primary">Sakarya Üniversitesi - Bilgisayar ve Bilişim Bilimleri Fakültesi</a></td>
+                                <td>Bilgisayar Mühendisliği (1. Sınıf)</td>
+                                <td class="text-success fw-bold">Devam Ediyor</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Lise</td>
+                                <td><a href="http://nacieksianadolulisesi.meb.k12.tr/" target="_blank" class="text-decoration-none fw-semibold text-primary">Dr. Kemal Naci Ekşi Anadolu Lisesi - Bağcılar/İstanbul</a></td>
+                                <td>Sayısal Bölümü</td>
+                                <td>Mezun</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="col-md-6 pe-md-4">
+                <header>
+                    <h4 class="text-danger mb-4 font-italic">Teknik Yetenekler</h4>
+                </header>
+                
+                <section class="mb-3">
+                    <label class="fw-bold">C# (Üniversite Eğitimi)</label>
+                    <div class="progress" style="height: 25px;">
+                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%;">80%</div>
+                    </div>
+                </section>
+
+                <section class="mb-3">
+                    <label class="fw-bold">C++ (Üniversite Eğitimi)</label>
+                    <div class="progress" style="height: 25px;">
+                        <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%;">75%</div>
+                    </div>
+                </section>
+
+                <section class="mb-3">
+                    <label class="fw-bold">Web Standartları (HTML5, CSS3, Bootstrap)</label>
+                    <div class="progress" style="height: 25px;">
+                        <div class="progress-bar bg-info text-dark progress-bar-striped progress-bar-animated" role="progressbar" style="width: 90%;">90%</div>
+                    </div>
+                </section>
+            </article>
+
+            <article class="col-md-6 ps-md-4 border-start">
+                <header>
+                    <h4 class="text-danger mb-4 font-italic">Projeler ve Faaliyetler</h4>
+                </header>
+                <div class="list-group">
+                    <div class="list-group-item list-group-item-action flex-column align-items-start border-0 border-bottom">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1 fw-bold text-dark">Web Teknolojileri Projesi</h6>
+                        </div>
+                        <p class="mb-1 text-muted small">Semantik HTML5, Responsive tasarım ve JavaScript kullanarak hazırladığım portfolyo çalışması.</p>
+                    </div>
+                    <div class="list-group-item list-group-item-action flex-column align-items-start border-0 border-bottom">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1 fw-bold text-dark">Üniversite Ders Uygulamaları</h6>
+                        </div>
+                        <p class="mb-1 text-muted small">C++ ve C# dilleri ile algoritma geliştirme ve nesne yönelimli programlama çalışmaları.</p>
+                    </div>
+                </div>
             </article>
 
         </section>
+    </main>
 
-        <a href="index.html" class="btn btn-secondary mt-4">Ana Sayfaya Dön</a>
-    </div>
+    <footer class="text-center text-muted mb-4">
+        <small>&copy; 2026 Nisa Nur Öner - Web Teknolojileri Ödevi</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
