@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Şehrim - Adıyaman</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-light">
- <!-- Gezinme Menüsü (Navbar) -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+<body class="bg-light d-flex flex-column min-vh-100">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 shadow">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Projem</a>
+            <a class="navbar-brand fw-bold" href="index.html">Projem</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,7 +20,7 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
                     <li class="nav-item"><a class="nav-link" href="hakkinda.html">Hakkında</a></li>
                     <li class="nav-item"><a class="nav-link" href="ozgecmis.html">Özgeçmiş</a></li>
-                    <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="sehrim.html">Şehrim</a></li>
                     <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
                     <li class="nav-item"><a class="nav-link" href="ilgialanlarim.html">İlgi Alanlarım</a></li>
                     <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
@@ -30,15 +29,14 @@
             </div>
         </div>
     </nav>
-<!--  Gezinme Menüsü (Navbar) -->
-    <div class="container mt-5 bg-white p-5 rounded shadow">
+
+    <main class="container mt-4 mb-5 bg-white p-5 rounded shadow">
         
         <header class="border-bottom pb-3 mb-4">
-            <h1 class="text-success text-center">Tarihin Başkenti: Adıyaman</h1>
+            <h1 class="text-success text-center fw-bold">Tarihin ve Lezzetin Başkenti: Adıyaman</h1>
         </header>
 
-        <!-- BAŞLANGIÇ: 4 Resimli Bootstrap Slider (Carousel) -->
-        <div id="sehirSlider" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div id="sehirSlider" class="carousel slide mb-5 shadow-sm rounded" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#sehirSlider" data-bs-slide-to="0" class="active"></button>
                 <button type="button" data-bs-target="#sehirSlider" data-bs-slide-to="1"></button>
@@ -46,37 +44,32 @@
                 <button type="button" data-bs-target="#sehirSlider" data-bs-slide-to="3"></button>
             </div>
 
-            <!-- Resimlerin bulunduğu kısım -->
             <div class="carousel-inner rounded">
-                <!-- 1. Resim: Nemrut Dağı -->
                 <div class="carousel-item active">
-                    <img src="data:image/jpeg;base64,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" class="d-block w-100" alt="Nemrut Dağı" style="height: 500px; object-fit: cover;">
+                    <img src="https://blog.jollytur.com/wp-content/uploads/2025/09/15743083211-1150x645.jpg" class="d-block w-100" alt="Nemrut Dağı" style="height: 500px; object-fit: cover;">
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-                        <h5>Nemrut Dağı</h5>
+                        <h5 class="fw-bold">Nemrut Dağı</h5>
                         <p>Dünyanın en muhteşem gündoğumu ve batımının izlendiği tarihi zirve.</p>
                     </div>
                 </div>
-                <!-- 2. Resim: Cendere Köprüsü -->
                 <div class="carousel-item">
                     <img src="https://bismilhabercomtr.teimg.com/bismilhaber-com-tr/uploads/2024/02/dunyanin-halen-kullanilmakta-olan-en-eski-koprulerinden-tarihi-cendere-koprusu-77-siddetindeki-depremlere-meydan-okuyor1.jpg" class="d-block w-100" alt="Cendere Köprüsü" style="height: 500px; object-fit: cover;">
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-                        <h5>Cendere Köprüsü</h5>
+                        <h5 class="fw-bold">Cendere Köprüsü</h5>
                         <p>Roma döneminden günümüze ulaşan muazzam mimari yapı.</p>
                     </div>
                 </div>
-                <!-- 3. Resim: Perre Antik Kenti -->
                 <div class="carousel-item">
                     <img src="https://static.daktilo.com/sites/1588/uploads/2024/07/02/perre-antik-kenti.jpg" class="d-block w-100" alt="Perre Antik Kenti" style="height: 500px; object-fit: cover;">
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-                        <h5>Perre Antik Kenti</h5>
+                        <h5 class="fw-bold">Perre Antik Kenti</h5>
                         <p>Kommagene Krallığı'nın en önemli beş büyük kentinden biri.</p>
                     </div>
                 </div>
-                <!-- 4. Resim: Karakuş Tümülüsü -->
                 <div class="carousel-item">
                     <img src="https://media.istockphoto.com/id/626964712/tr/foto%C4%9Fraf/view-of-karakus-tumulus-ancient-area-of-nemrut-national-park.jpg?s=612x612&w=0&k=20&c=bNQKphGtHRNsgwgikSKv4uzNW_oziBSLM3GHy193f1k=" class="d-block w-100" alt="Karakuş Tümülüsü" style="height: 500px; object-fit: cover;">
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-                        <h5>Karakuş Tümülüsü</h5>
+                        <h5 class="fw-bold">Karakuş Tümülüsü</h5>
                         <p>Kommagene Krallığı'nın kadınlarına ait görkemli anıt mezar.</p>
                     </div>
                 </div>
@@ -91,28 +84,104 @@
                 <span class="visually-hidden">Sonraki</span>
             </button>
         </div>
-        <!-- BİTİŞ: Slider (Carousel) -->
-
-        <!-- Şehir Bilgileri Kısmı -->
         <section>
-            <h2 class="text-secondary">Genel Bilgiler</h2>
-            <p><strong>Nüfus:</strong> Yaklaşık 632.000</p>
-            <p><strong>Bölge:</strong> Güneydoğu Anadolu Bölgesi</p>
-            <p>Adıyaman; tarihi zenginlikleri, eşsiz kültürel mirası ve meşhur çiğ köftesiyle Güneydoğu Anadolu'nun en büyüleyici şehirlerinden biridir. Tarih boyunca birçok medeniyete ev sahipliği yapmış olan bu şehir, özellikle Kommagene Krallığı'nın bıraktığı eserlerle tüm dünyanın ilgisini çekmektedir.</p>
+            <div class="row">
+                <div class="col-md-5 mb-4">
+                    <div class="card h-100 border-0 shadow-sm border-start border-success border-4 bg-light">
+                        <div class="card-body">
+                            <h3 class="card-title text-success fw-bold border-bottom border-success pb-2 mb-3">Genel Bilgiler</h3>
+                            
+                            <ul class="list-unstyled mb-3">
+                                <li class="mb-2">
+                                    <span class="fw-bold text-dark">Nüfus:</span> 
+                                    <span class="badge bg-secondary text-white fs-6 ms-1">Yaklaşık 632.000</span>
+                                </li>
+                                <li>
+                                    <span class="fw-bold text-dark">Bölge:</span> 
+                                    <span class="badge bg-success text-white fs-6 ms-1">Güneydoğu Anadolu</span>
+                                </li>
+                            </ul>
+                            
+                            <p class="card-text text-muted" style="text-align: justify;">
+                                Adıyaman; tarihi zenginlikleri, eşsiz kültürel mirası ve meşhur çiğ köftesiyle Güneydoğu Anadolu'nun en büyüleyici şehirlerinden biridir. Tarih boyunca birçok medeniyete ev sahipliği yapmış olan bu şehir, özellikle Kommagene Krallığı'nın bıraktığı eserlerle tüm dünyanın ilgisini çekmektedir.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-            <h2 class="text-secondary mt-4">Gezilecek Yerler</h2>
-            <ul>
-                <li><strong>Nemrut Dağı Milli Parkı:</strong> UNESCO Dünya Mirası Listesi'nde yer alan, devasa heykelleriyle ünlü dağ.</li>
-                <li><strong>Cendere Köprüsü:</strong> Dünyanın halen kullanılmakta olan en eski taş kemerli köprülerinden biri.</li>
-                <li><strong>Perre Antik Kenti:</strong> Roma kaynaklarında suyunun güzelliğiyle bahsedilen tarihi yerleşim yeri.</li>
-                <li><strong>Arsameia (Eski Kâhta):</strong> Kommagene Krallığı'nın yazlık başkenti ve idari merkezi.</li>
-            </ul>
+                <div class="col-md-7 mb-4">
+                    <div class="card h-100 border-0 shadow-sm border-start border-warning border-4 bg-light">
+                        <div class="card-body">
+                            <h3 class="card-title text-warning text-dark fw-bold border-bottom border-warning pb-2 mb-3">Gezilecek Yerler</h3>
+                            
+                            <ul class="list-group list-group-flush bg-transparent">
+                                <li class="list-group-item bg-transparent px-0 border-light">
+                                    <strong class="text-dark">🏔️ Nemrut Dağı Milli Parkı:</strong> <span class="text-muted">UNESCO Dünya Mirası Listesi'nde yer alan, devasa heykelleriyle ünlü dağ.</span>
+                                </li>
+                                <li class="list-group-item bg-transparent px-0 border-light">
+                                    <strong class="text-dark">🌉 Cendere Köprüsü:</strong> <span class="text-muted">Dünyanın halen kullanılmakta olan en eski taş kemerli köprülerinden biri.</span>
+                                </li>
+                                <li class="list-group-item bg-transparent px-0 border-light">
+                                    <strong class="text-dark">🏛️ Perre Antik Kenti:</strong> <span class="text-muted">Roma kaynaklarında suyunun güzelliğiyle bahsedilen tarihi yerleşim yeri.</span>
+                                </li>
+                                <li class="list-group-item bg-transparent px-0 border-light border-bottom-0">
+                                    <strong class="text-dark">🏰 Arsameia (Eski Kâhta):</strong> <span class="text-muted">Kommagene Krallığı'nın yazlık başkenti ve idari merkezi.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm border-start border-danger border-4 bg-light">
+                        <div class="card-body">
+                            <h3 class="card-title text-danger fw-bold border-bottom border-danger pb-2 mb-3">🍽️ Yöresel Mutfağımız</h3>
+                            
+                            <ul class="list-group list-group-flush bg-transparent">
+                                <li class="list-group-item bg-transparent px-0 border-light">
+                                    <strong class="text-dark">Etsiz Çiğ Köfte:</strong> <span class="text-muted">Adıyaman denilince akla ilk gelen, yoğurma ustalarının ellerinden çıkan Türkiye'ye mal olmuş efsanevi lezzet.</span>
+                                </li>
+                                <li class="list-group-item bg-transparent px-0 border-light">
+                                    <strong class="text-dark">Besni Tavası:</strong> <span class="text-muted">Kuşbaşı et, patlıcan, domates ve biberin taş fırında odun ateşiyle buluştuğu muazzam ana yemek.</span>
+                                </li>
+                                <li class="list-group-item bg-transparent px-0 border-light border-bottom-0">
+                                    <strong class="text-dark">Meyir Çorbası:</strong> <span class="text-muted">Yoğurt, dövme (buğday) ve nohutla yapılan, yöreye özgü ferahlatıcı çorba.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-0 shadow-sm border-start border-info border-4 bg-light">
+                        <div class="card-body">
+                            <h3 class="card-title text-info text-dark fw-bold border-bottom border-info pb-2 mb-3">🎵 Kültür & Yaşam</h3>
+                            
+                            <ul class="list-group list-group-flush bg-transparent">
+                                <li class="list-group-item bg-transparent px-0 border-light">
+                                    <strong class="text-dark">Harfane Geceleri:</strong> <span class="text-muted">Türkülerin söylendiği, çiğ köftelerin yoğrulduğu geleneksel müzik, şiir ve muhabbet meclisleri.</span>
+                                </li>
+                                <li class="list-group-item bg-transparent px-0 border-light">
+                                    <strong class="text-dark">El Sanatları:</strong> <span class="text-muted">Özellikle Besni ve Tut ilçelerinde nesilden nesile aktarılan halı, kilim ve heybe dokumacılığı.</span>
+                                </li>
+                                <li class="list-group-item bg-transparent px-0 border-light border-bottom-0">
+                                    <strong class="text-dark">Sıcakkanlılık:</strong> <span class="text-muted">Güneydoğu Anadolu kültürünün en güzel yansıması olan, kapısı herkese açık misafirperver halkı.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <a href="index.html" class="btn btn-secondary mt-4">Ana Sayfaya Dön</a>
-    </div>
+        <div class="text-center mt-3 border-top pt-4">
+            <a href="index.html" class="btn btn-outline-success fw-bold px-5 py-2">Ana Sayfaya Dön</a>
+        </div>
+        
+    </main>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ if (empty($email) || empty($sifre)) {
     exit();
 }
 
-// Hocanın ödevde istediği doğru giriş bilgileri
+// doğru giriş bilgileri
 $dogru_email = "b251210069@sakarya.edu.tr";
 $dogru_sifre = "b251210069";
 
