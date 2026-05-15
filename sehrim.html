@@ -46,28 +46,36 @@
 
             <div class="carousel-inner rounded">
                 <div class="carousel-item active">
-                    <img src="https://blog.jollytur.com/wp-content/uploads/2025/09/15743083211-1150x645.jpg" class="d-block w-100" alt="Nemrut Dağı" style="height: 500px; object-fit: cover;">
+                    <a href="https://www.kulturportali.gov.tr/turkiye/adiyaman/gezilecekyer/nemrut-dagi" target="_blank" title="Nemrut Dağı - T.C. Kültür Portalı">
+                        <img src="https://blog.jollytur.com/wp-content/uploads/2025/09/15743083211-1150x645.jpg" class="d-block w-100" alt="Nemrut Dağı" style="height: 500px; object-fit: cover;">
+                    </a>
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                         <h5 class="fw-bold">Nemrut Dağı</h5>
                         <p>Dünyanın en muhteşem gündoğumu ve batımının izlendiği tarihi zirve.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://bismilhabercomtr.teimg.com/bismilhaber-com-tr/uploads/2024/02/dunyanin-halen-kullanilmakta-olan-en-eski-koprulerinden-tarihi-cendere-koprusu-77-siddetindeki-depremlere-meydan-okuyor1.jpg" class="d-block w-100" alt="Cendere Köprüsü" style="height: 500px; object-fit: cover;">
+                    <a href="https://tr.wikipedia.org/wiki/Cendere_K%C3%B6pr%C3%BCs%C3%BC" target="_blank" title="Cendere Köprüsü Vikipedi Sayfasına Git">
+                        <img src="https://bismilhabercomtr.teimg.com/bismilhaber-com-tr/uploads/2024/02/dunyanin-halen-kullanilmakta-olan-en-eski-koprulerinden-tarihi-cendere-koprusu-77-siddetindeki-depremlere-meydan-okuyor1.jpg" class="d-block w-100" alt="Cendere Köprüsü" style="height: 500px; object-fit: cover;">
+                    </a>
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                         <h5 class="fw-bold">Cendere Köprüsü</h5>
                         <p>Roma döneminden günümüze ulaşan muazzam mimari yapı.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://static.daktilo.com/sites/1588/uploads/2024/07/02/perre-antik-kenti.jpg" class="d-block w-100" alt="Perre Antik Kenti" style="height: 500px; object-fit: cover;">
+                    <a href="https://www.kulturportali.gov.tr/turkiye/adiyaman/gezilecekyer/perrre-antk-kent" target="_blank" title="Perre Antik Kenti - T.C. Kültür Portalı">
+                        <img src="https://static.daktilo.com/sites/1588/uploads/2024/07/02/perre-antik-kenti.jpg" class="d-block w-100" alt="Perre Antik Kenti" style="height: 500px; object-fit: cover;">
+                    </a>
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                         <h5 class="fw-bold">Perre Antik Kenti</h5>
                         <p>Kommagene Krallığı'nın en önemli beş büyük kentinden biri.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://media.istockphoto.com/id/626964712/tr/foto%C4%9Fraf/view-of-karakus-tumulus-ancient-area-of-nemrut-national-park.jpg?s=612x612&w=0&k=20&c=bNQKphGtHRNsgwgikSKv4uzNW_oziBSLM3GHy193f1k=" class="d-block w-100" alt="Karakuş Tümülüsü" style="height: 500px; object-fit: cover;">
+                    <a href="https://tr.wikipedia.org/wiki/Karaku%C5%9F_T%C3%BCm%C3%BCl%C3%BCs%C3%BC" target="_blank" title="Karakuş Tümülüsü Vikipedi Sayfasına Git">
+                        <img src="https://media.istockphoto.com/id/626964712/tr/foto%C4%9Fraf/view-of-karakus-tumulus-ancient-area-of-nemrut-national-park.jpg?s=612x612&w=0&k=20&c=bNQKphGtHRNsgwgikSKv4uzNW_oziBSLM3GHy193f1k=" class="d-block w-100" alt="Karakuş Tümülüsü" style="height: 500px; object-fit: cover;">
+                    </a>
                     <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                         <h5 class="fw-bold">Karakuş Tümülüsü</h5>
                         <p>Kommagene Krallığı'nın kadınlarına ait görkemli anıt mezar.</p>
@@ -183,5 +191,44 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. URL'den gelen giriş sinyalini yakala
+            const urlParams = new URLSearchParams(window.location.search);
+            const incomingUser = urlParams.get('user');
+            
+            if (incomingUser) {
+                // Tarayıcı hafızasına kaydet
+                localStorage.setItem('aktif_kullanici', incomingUser);
+                //sadece index.html kalsın
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+
+            // 2. Hafızada kullanıcı var mı kontrol et
+            const aktifKullanici = localStorage.getItem('aktif_kullanici');
+            
+            if (aktifKullanici) {
+                // Menüdeki "Giriş Yap" linkini bul
+                const loginLinkleri = document.querySelectorAll('a[href="login.html"]');
+                
+                loginLinkleri.forEach(link => {
+                    const parentLi = link.parentElement;
+                    // Giriş yapılmışsa menüyü otomatik değiştir
+                    parentLi.innerHTML = `
+                        <span class="nav-link text-info fw-bold">Hoş geldin, ${aktifKullanici}</span>
+                        </li>
+                        <li class="nav-item ms-2">
+                            <a class="nav-link text-danger fw-bold" href="#" onclick="cikisYap()">Çıkış Yap</a>
+                    `;
+                });
+            }
+        });
+
+        // Çıkış yapma fonksiyonu
+        function cikisYap() {
+            localStorage.removeItem('aktif_kullanici'); // Hafızayı sil
+            window.location.href = "index.html"; // Ana sayfaya at
+        }
+    </script>
 </body>
 </html>
