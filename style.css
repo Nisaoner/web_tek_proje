@@ -1,0 +1,23 @@
+/* TÜM SİTE İÇİN GENEL AYARLAR */
+html {
+    scroll-behavior: smooth; /* Sayfa içi linklerde yumuşak kaydırma sağlar */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* yazı tipi */
+}
+
+/* KARTLARA ÜZERİNE GELİNCE HAVAYA KALKMA (HOVER) EFEKTİ */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Fareyle üzerine gelince kartı 5px yukarı kaldırır */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important; /* Altına belirgin bir gölge verir */
+}
+
+/* LİNKLER İÇİN UFAK BİR DOKUNUŞ */
+a {
+    text-decoration: none; /* Linklerin altındaki çizgiyi kaldırır */
+}
